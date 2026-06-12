@@ -12,6 +12,7 @@ any paid compute is used.
 ```sh
 python -m writing_zero_pipeline.cli generate --out artifacts/samples.jsonl
 python -m writing_zero_pipeline.cli evaluate --samples artifacts/samples.jsonl --out artifacts/eval.json
+python -m writing_zero_pipeline.cli handoff --out artifacts/compute_handoff.json
 python -m unittest discover -s tests
 ```
 
@@ -36,6 +37,8 @@ flowchart LR
 - Produce artifacts that can be inspected before a real GenRM training job.
 - Make the future compute handoff explicit: inputs, command shape, metrics, and
   failure modes.
+- Emit `artifacts/compute_handoff.json` so scope, metrics, and compute gates can
+  be reviewed before any real training run.
 
 ## Next Compute Handoff
 
@@ -45,4 +48,3 @@ Once scope is accepted, replace the mock candidate generator and scorer with:
 - Rubric-derived pairwise labels from an agreed evaluator process.
 - A real GenRM training entrypoint that consumes the same JSONL schema.
 - A main-model training/eval stage that consumes GenRM rewards.
-
