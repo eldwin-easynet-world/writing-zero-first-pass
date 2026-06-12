@@ -1,0 +1,6 @@
+{
+  "accuracy": 1.0,
+  "correct_count": 6,
+  "sample_count": 6,
+  "scorer": "mock_keyword_genrm_v0"
+}

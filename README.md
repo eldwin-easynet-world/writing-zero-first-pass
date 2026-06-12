@@ -13,6 +13,7 @@ any paid compute is used.
 python -m writing_zero_pipeline.cli generate --out artifacts/samples.jsonl
 python -m writing_zero_pipeline.cli evaluate --samples artifacts/samples.jsonl --out artifacts/eval.json
 python -m writing_zero_pipeline.cli handoff --out artifacts/compute_handoff.json
+python -m writing_zero_pipeline.cli learning-loop --samples artifacts/samples.jsonl --out artifacts/learning_loop.json
 python -m unittest discover -s tests
 ```
 
@@ -27,6 +28,37 @@ flowchart LR
     D --> E[Mock GenRM scorer]
     E --> F[Evaluation artifact]
     F --> G[Compute handoff plan]
+    F --> H[Memory learning-loop report]
+    G --> I[Reviewer compute gate]
+    H --> I
+```
+
+## Agent Memory Loop
+
+The prototype now emits a memory-learning artifact that exercises the same
+shape expected from a real agent loop: fact memory, episodic memory, procedural
+memory, skills, agents, and workflows. It deduplicates stable procedural,
+skill, agent, and workflow events across generated samples while preserving
+sample-scoped facts and run observations.
+
+```mermaid
+flowchart TD
+    A[Pairwise sample] --> B[Fact memory]
+    A --> C[Episodic memory]
+    A --> D[Procedural memory]
+    A --> E[Skill memory]
+    A --> F[Agent memory]
+    A --> G[Workflow memory]
+    B --> H[Deduplication by stable event id]
+    C --> H
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I{Confidence and policy gate}
+    I -->|accepted| J[Self-update candidates]
+    I -->|rejected| K[Keep as evidence only]
+    J --> L[Next training iteration]
 ```
 
 ## First Milestone Contract
@@ -39,6 +71,20 @@ flowchart LR
   failure modes.
 - Emit `artifacts/compute_handoff.json` so scope, metrics, and compute gates can
   be reviewed before any real training run.
+- Emit `artifacts/learning_loop.json` so memory kinds, deduplication, rejected
+  updates, and self-update candidates can be inspected before connecting a real
+  agent or model.
+
+## Review Checklist
+
+- `artifacts/samples.jsonl`: deterministic seed samples with stable IDs.
+- `artifacts/eval.json`: mock GenRM scorer result for the current seed slice.
+- `artifacts/compute_handoff.json`: next-stage compute inputs, commands,
+  metrics, artifacts, and failure modes.
+- `artifacts/learning_loop.json`: memory events across fact, episodic,
+  procedural, skill, agent, and workflow scopes.
+- Tests cover determinism, schema round-trip, scorer parity, compute handoff,
+  and memory-loop deduplication.
 
 ## Next Compute Handoff
 

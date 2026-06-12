@@ -5,6 +5,7 @@ from pathlib import Path
 
 from writing_zero_pipeline.genrm import evaluate_samples, predict_preference
 from writing_zero_pipeline.handoff import build_handoff_plan, write_handoff_plan
+from writing_zero_pipeline.learning_loop import build_learning_loop_report, write_learning_loop_report
 from writing_zero_pipeline.sample_generator import generate_samples, read_jsonl, write_jsonl
 
 
@@ -50,6 +51,30 @@ class PipelineTest(unittest.TestCase):
             data = json.loads(path.read_text())
             self.assertEqual(data["milestone"], "replace-mock-genrm-with-agreed-public-sources")
             self.assertIn("GenRM validation accuracy", data["metrics"])
+
+    def test_learning_loop_covers_memory_kinds_and_dedups(self) -> None:
+        samples = generate_samples()
+        report = build_learning_loop_report(samples)
+        self.assertEqual(
+            report.memory_kinds,
+            ["agent", "episodic", "fact", "procedural", "skill", "workflow"],
+        )
+        self.assertEqual(report.raw_event_count, len(samples) * 6)
+        self.assertLess(report.deduped_event_count, report.raw_event_count)
+        self.assertGreater(len(report.update_candidate_ids), 0)
+        self.assertGreater(len(report.rejected_update_ids), 0)
+
+    def test_learning_loop_json_round_trip(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "learning_loop.json"
+            write_learning_loop_report(generate_samples(), path)
+            data = json.loads(path.read_text())
+            self.assertEqual(
+                set(data["memory_kinds"]),
+                {"fact", "episodic", "procedural", "skill", "agent", "workflow"},
+            )
+            self.assertGreater(data["deduped_event_count"], 0)
+            self.assertGreater(len(data["events"]), 0)
 
 
 if __name__ == "__main__":

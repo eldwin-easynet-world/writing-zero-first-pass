@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .genrm import evaluate_samples, write_eval
 from .handoff import write_handoff_plan
+from .learning_loop import write_learning_loop_report
 from .sample_generator import generate_samples, read_jsonl, write_jsonl
 
 
@@ -21,6 +22,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     handoff = subcommands.add_parser("handoff", help="Write compute handoff plan")
     handoff.add_argument("--out", default="artifacts/compute_handoff.json", help="Output JSON path")
+
+    learning = subcommands.add_parser("learning-loop", help="Write memory learning-loop report")
+    learning.add_argument("--samples", default="artifacts/samples.jsonl", help="Input JSONL path")
+    learning.add_argument("--out", default="artifacts/learning_loop.json", help="Output JSON path")
 
     return parser
 
@@ -41,6 +46,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "handoff":
         plan = write_handoff_plan(Path(args.out))
         print(f"milestone={plan.milestone} out={args.out}")
+        return 0
+    if args.command == "learning-loop":
+        samples = read_jsonl(Path(args.samples))
+        report = write_learning_loop_report(samples, Path(args.out))
+        print(
+            f"raw_events={report.raw_event_count} deduped_events={report.deduped_event_count} "
+            f"update_candidates={len(report.update_candidate_ids)} out={args.out}"
+        )
         return 0
     raise AssertionError(f"Unhandled command: {args.command}")
 

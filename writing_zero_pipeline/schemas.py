@@ -36,3 +36,31 @@ class EvalResult:
     def to_jsonable(self) -> dict[str, Any]:
         return asdict(self)
 
+
+@dataclass(frozen=True)
+class MemoryEvent:
+    id: str
+    kind: str
+    source_sample_id: str
+    confidence: float
+    payload: dict[str, Any]
+    provenance: dict[str, str]
+    supersedes: str | None = None
+
+    def to_jsonable(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class LearningLoopReport:
+    raw_event_count: int
+    deduped_event_count: int
+    memory_kinds: list[str]
+    update_candidate_ids: list[str]
+    rejected_update_ids: list[str]
+    events: list[MemoryEvent]
+
+    def to_jsonable(self) -> dict[str, Any]:
+        data = asdict(self)
+        data["events"] = [event.to_jsonable() for event in self.events]
+        return data

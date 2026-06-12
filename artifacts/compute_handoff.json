@@ -1,0 +1,35 @@
+{
+  "artifacts": [
+    "artifacts/samples.jsonl",
+    "artifacts/eval.json",
+    "artifacts/compute_handoff.json",
+    "training logs and model card for real GenRM run"
+  ],
+  "commands": [
+    "python3 -m writing_zero_pipeline.cli generate --out artifacts/samples.jsonl",
+    "python3 -m writing_zero_pipeline.cli evaluate --samples artifacts/samples.jsonl --out artifacts/eval.json",
+    "python3 -m unittest discover -s tests"
+  ],
+  "compute_gate": "Do not request paid compute until sample schema, rubric source, label provenance, and offline validation are accepted.",
+  "failure_modes": [
+    "rubric labels collapse to length preference",
+    "candidate responses are too homogeneous for pairwise learning",
+    "GenRM overfits the seed prompts",
+    "main model optimizes evaluator phrasing instead of writing quality",
+    "compute run lacks enough provenance to reproduce labels"
+  ],
+  "inputs": [
+    "public writing prompts or agreed benchmark prompts",
+    "rubric principles derived from the Writing-Zero paper",
+    "two candidate responses per prompt from agreed source models",
+    "pairwise preference labels from agreed evaluator process"
+  ],
+  "metrics": [
+    "pairwise label agreement",
+    "mock-to-real scorer parity on seed slice",
+    "GenRM validation accuracy",
+    "reward hacking checks: length bias and over-explanation rate",
+    "main-model win rate on held-out writing prompts"
+  ],
+  "milestone": "replace-mock-genrm-with-agreed-public-sources"
+}

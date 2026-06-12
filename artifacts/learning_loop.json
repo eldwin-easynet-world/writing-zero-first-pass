@@ -1,0 +1,328 @@
+{
+  "deduped_event_count": 16,
+  "events": [
+    {
+      "confidence": 0.84,
+      "id": "24497fd17aef85ce",
+      "kind": "agent",
+      "payload": {
+        "agent": "compute_gate_reviewer",
+        "role": "reject paid-compute escalation until artifacts are reproducible and reviewer-readable"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "127eeb68b2f4c667",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Describe a safe first milestone for an expensive training project."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "1c82086e60495bb8",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Write a concise critique of a rushed benchmark submission."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "05d2d883505ed520",
+        "sample_id": "225db6390d2cb261",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "225db6390d2cb261",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "2b2c5255c9002ea3",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Explain why reproducible evaluation matters for AI training."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "5aed3caa71166f46",
+        "sample_id": "7c406f9b451bbfd6",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "7c406f9b451bbfd6",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "2f643795654ab4e1",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Explain why reproducible evaluation matters for AI training."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "6c307998fa57e820",
+        "sample_id": "abcbbf0a443708b4",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "abcbbf0a443708b4",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "37c045a3a4f38970",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Write a concise critique of a rushed benchmark submission."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "ae3541d065dbc8f1",
+        "sample_id": "3a044bb3ef577d49",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "3a044bb3ef577d49",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.9,
+      "id": "59bce988ff0d4847",
+      "kind": "episodic",
+      "payload": {
+        "observation": "A deterministic seed sample was generated and labeled before any paid compute.",
+        "prompt": "Describe a safe first milestone for an expensive training project."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "267286bceaf39115",
+        "sample_id": "b768deee909c3957",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "b768deee909c3957",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "239689461aea8cb5",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "a",
+        "preferred_response_hash": "2e41f943670582ed",
+        "rubric_id": "actionability"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "ae3541d065dbc8f1",
+        "sample_id": "3a044bb3ef577d49",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "3a044bb3ef577d49",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "6a836c766e7c7b62",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "b",
+        "preferred_response_hash": "02b59c36c1db60d4",
+        "rubric_id": "actionability"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "6c307998fa57e820",
+        "sample_id": "abcbbf0a443708b4",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "abcbbf0a443708b4",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "7d636e441a9383f4",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "a",
+        "preferred_response_hash": "2e41f943670582ed",
+        "rubric_id": "clarity_evidence"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "05d2d883505ed520",
+        "sample_id": "225db6390d2cb261",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "225db6390d2cb261",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "b697dd2f100c33b2",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "b",
+        "preferred_response_hash": "02b59c36c1db60d4",
+        "rubric_id": "clarity_evidence"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "5aed3caa71166f46",
+        "sample_id": "7c406f9b451bbfd6",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "7c406f9b451bbfd6",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "cd557a44b61a2b85",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "a",
+        "preferred_response_hash": "ffb024b8c3f44f9d",
+        "rubric_id": "actionability"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.95,
+      "id": "de6d1ac62986860f",
+      "kind": "fact",
+      "payload": {
+        "preferred_response": "b",
+        "preferred_response_hash": "ffb024b8c3f44f9d",
+        "rubric_id": "clarity_evidence"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "267286bceaf39115",
+        "sample_id": "b768deee909c3957",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "b768deee909c3957",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.92,
+      "id": "554a45f52f5144e7",
+      "kind": "procedural",
+      "payload": {
+        "gate": "Only promote the procedure after schema, provenance, and offline validation pass.",
+        "procedure": "Generate pairwise samples, evaluate labels, emit compute handoff, then emit memory learning report."
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.88,
+      "id": "57660f3f96a2de96",
+      "kind": "skill",
+      "payload": {
+        "inputs": [
+          "prompt",
+          "rubric",
+          "candidate_a",
+          "candidate_b"
+        ],
+        "outputs": [
+          "preferred_response",
+          "label_provenance"
+        ],
+        "skill": "rubric_grounded_pairwise_labeling"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    },
+    {
+      "confidence": 0.93,
+      "id": "b5393535b86469dc",
+      "kind": "workflow",
+      "payload": {
+        "dedup_key": "workflow:name:version",
+        "steps": [
+          "seed data",
+          "mock scorer",
+          "eval artifact",
+          "handoff artifact",
+          "learning report"
+        ],
+        "workflow": "zero_spend_to_compute_gate"
+      },
+      "provenance": {
+        "labeler": "mock_genrm_reference_scorer",
+        "sample_hash": "c0ca4a5cd4530880",
+        "sample_id": "0e70cd869520f02d",
+        "source": "deterministic_mock_generator"
+      },
+      "source_sample_id": "0e70cd869520f02d",
+      "supersedes": null
+    }
+  ],
+  "memory_kinds": [
+    "agent",
+    "episodic",
+    "fact",
+    "procedural",
+    "skill",
+    "workflow"
+  ],
+  "raw_event_count": 36,
+  "rejected_update_ids": [
+    "24497fd17aef85ce",
+    "57660f3f96a2de96"
+  ],
+  "update_candidate_ids": [
+    "127eeb68b2f4c667",
+    "1c82086e60495bb8",
+    "2b2c5255c9002ea3",
+    "2f643795654ab4e1",
+    "37c045a3a4f38970",
+    "59bce988ff0d4847",
+    "239689461aea8cb5",
+    "6a836c766e7c7b62",
+    "7d636e441a9383f4",
+    "b697dd2f100c33b2",
+    "cd557a44b61a2b85",
+    "de6d1ac62986860f",
+    "554a45f52f5144e7",
+    "b5393535b86469dc"
+  ]
+}
