@@ -2,6 +2,8 @@
 
 Zero-spend prototype for the Prime Intellect Writing-Zero bounty proposal.
 
+![Writing-Zero first-pass architecture](docs/architecture.svg)
+
 This repository is a reviewable first milestone, not a final training run. It
 defines the data contract, a deterministic pairwise sample generator, a mock
 GenRM-style scorer, and a tiny evaluation harness that can run locally before

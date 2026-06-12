@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">Writing-Zero first-pass research pipeline architecture</title>
+  <desc id="desc">A left to right diagram showing prompts, rubrics, pairwise sample generation, mock GenRM scoring, evaluation, compute handoff, memory learning loop, deduplication, and self-update gate.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #ffffff; stroke: #1d4ed8; stroke-width: 2; rx: 12; }
+      .green-card { fill: #fbfefb; stroke: #15803d; stroke-width: 2; rx: 12; }
+      .loop { fill: #f7fff8; stroke: #166534; stroke-width: 2; rx: 18; }
+      .title { fill: #0f172a; font: 700 44px Arial, sans-serif; letter-spacing: .5px; }
+      .subtitle { fill: #2563eb; font: 700 18px Arial, sans-serif; letter-spacing: 7px; }
+      .label { fill: #0f172a; font: 700 17px Arial, sans-serif; }
+      .small { fill: #334155; font: 400 13px Arial, sans-serif; }
+      .tiny { fill: #475569; font: 400 11px Arial, sans-serif; }
+      .arrow { stroke: #1d4ed8; stroke-width: 3; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-green { stroke: #15803d; stroke-width: 3; fill: none; marker-end: url(#arrow-green); }
+      .dash { stroke: #15803d; stroke-width: 3; fill: none; stroke-dasharray: 8 8; marker-end: url(#arrow-green); }
+      .icon { fill: none; stroke: #1d4ed8; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-green { fill: none; stroke: #15803d; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .pill { fill: #ffffff; stroke: #15803d; stroke-width: 1.6; rx: 10; }
+      .stage { fill: #ffffff; stroke: #1d4ed8; stroke-width: 1.6; rx: 9; }
+    </style>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#15803d"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="760"/>
+  <text class="title" x="720" y="66" text-anchor="middle">Writing-Zero First Pass</text>
+  <text class="subtitle" x="720" y="104" text-anchor="middle">AI RESEARCH PIPELINE</text>
+
+  <g transform="translate(34 198)">
+    <rect class="card" width="138" height="324"/>
+    <circle class="icon" cx="69" cy="58" r="26"/>
+    <path class="icon" d="M43 58h52M69 32c10 13 10 39 0 52M69 32c-10 13-10 39 0 52"/>
+    <text class="label" x="69" y="138" text-anchor="middle">PUBLIC</text>
+    <text class="label" x="69" y="160" text-anchor="middle">PROMPTS</text>
+    <path d="M30 188h78" stroke="#93c5fd" stroke-width="2"/>
+    <text class="small" x="69" y="220" text-anchor="middle">Curated prompts</text>
+    <text class="small" x="69" y="239" text-anchor="middle">from public</text>
+    <text class="small" x="69" y="258" text-anchor="middle">sources</text>
+  </g>
+
+  <g transform="translate(206 198)">
+    <rect class="card" width="138" height="324"/>
+    <rect class="icon" x="44" y="34" width="50" height="64" rx="6"/>
+    <path class="icon" d="M58 52h22M58 68h22M58 84h22M51 52l3 3 6-8M51 68l3 3 6-8"/>
+    <text class="label" x="69" y="148" text-anchor="middle">RUBRIC PACK</text>
+    <path d="M30 188h78" stroke="#93c5fd" stroke-width="2"/>
+    <text class="small" x="69" y="220" text-anchor="middle">Scoring criteria</text>
+    <text class="small" x="69" y="239" text-anchor="middle">and evaluator</text>
+    <text class="small" x="69" y="258" text-anchor="middle">principles</text>
+  </g>
+
+  <g transform="translate(378 198)">
+    <rect class="card" width="166" height="324"/>
+    <circle class="icon" cx="83" cy="34" r="8"/>
+    <path class="icon" d="M83 42v54M83 62l-34 24M83 62l34 24"/>
+    <circle class="icon" cx="49" cy="86" r="8"/>
+    <circle class="icon" cx="117" cy="86" r="8"/>
+    <text class="label" x="83" y="138" text-anchor="middle">PAIRWISE SAMPLE</text>
+    <text class="label" x="83" y="160" text-anchor="middle">GENERATOR</text>
+    <path d="M36 188h94" stroke="#93c5fd" stroke-width="2"/>
+    <rect x="38" y="226" width="46" height="62" rx="7" fill="#eff6ff" stroke="#1d4ed8"/>
+    <rect x="100" y="226" width="46" height="62" rx="7" fill="#f0fdf4" stroke="#15803d"/>
+    <text class="label" x="61" y="262" text-anchor="middle">A</text>
+    <text class="label" x="123" y="262" text-anchor="middle">B</text>
+    <path class="arrow-green" d="M86 257h12"/>
+  </g>
+
+  <g transform="translate(582 198)">
+    <rect class="card" width="138" height="324"/>
+    <path class="icon" d="M46 94c-10-23 8-42 24-27 16-15 34 4 24 27M48 72c-14 2-20 18-10 30M90 72c14 2 20 18 10 30"/>
+    <text class="label" x="69" y="138" text-anchor="middle">MOCK GENRM</text>
+    <text class="label" x="69" y="160" text-anchor="middle">SCORER</text>
+    <path d="M30 188h78" stroke="#93c5fd" stroke-width="2"/>
+    <path class="icon" d="M31 282a42 42 0 0 1 76 0"/>
+    <path class="icon" d="M69 282l23-28"/>
+  </g>
+
+  <g transform="translate(754 198)">
+    <rect class="card" width="138" height="324"/>
+    <path class="icon" d="M50 34h46l18 18v52H50zM96 34v20h18"/>
+    <path class="icon" d="M62 80h36M62 94h25"/>
+    <text class="label" x="69" y="138" text-anchor="middle">EVALUATION</text>
+    <text class="label" x="69" y="160" text-anchor="middle">ARTIFACT</text>
+    <path d="M30 188h78" stroke="#93c5fd" stroke-width="2"/>
+    <text class="small" x="69" y="226" text-anchor="middle">Scores, metadata,</text>
+    <text class="small" x="69" y="245" text-anchor="middle">and validation</text>
+    <text class="small" x="69" y="264" text-anchor="middle">result</text>
+  </g>
+
+  <g transform="translate(932 198)">
+    <rect class="green-card" width="146" height="324"/>
+    <path class="icon-green" d="M73 32l38 18v35c0 26-17 43-38 51-21-8-38-25-38-51V50z"/>
+    <path class="icon-green" d="M57 84l12 12 25-34"/>
+    <text class="label" x="73" y="138" text-anchor="middle" fill="#14532d">COMPUTE</text>
+    <text class="label" x="73" y="160" text-anchor="middle" fill="#14532d">HANDOFF GATE</text>
+    <path d="M30 188h86" stroke="#86efac" stroke-width="2"/>
+    <text class="small" x="73" y="220" text-anchor="middle">Quality and budget</text>
+    <text class="small" x="73" y="239" text-anchor="middle">gate before</text>
+    <text class="small" x="73" y="258" text-anchor="middle">model compute</text>
+  </g>
+
+  <g transform="translate(1122 128)">
+    <rect class="loop" width="276" height="466"/>
+    <text class="label" x="138" y="38" text-anchor="middle" fill="#14532d">MEMORY LEARNING LOOP</text>
+    <g transform="translate(38 64)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">FACT</text>
+    </g>
+    <g transform="translate(38 124)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">EPISODIC</text>
+    </g>
+    <g transform="translate(38 184)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">PROCEDURAL</text>
+    </g>
+    <g transform="translate(38 244)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">SKILL</text>
+    </g>
+    <g transform="translate(38 304)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">AGENT</text>
+    </g>
+    <g transform="translate(38 364)">
+      <rect class="pill" width="142" height="46"/>
+      <text class="label" x="71" y="29" text-anchor="middle">WORKFLOW</text>
+    </g>
+    <path class="arrow-green" d="M180 87h35v120"/>
+    <path class="arrow-green" d="M180 147h35v60"/>
+    <path class="arrow-green" d="M180 207h35"/>
+    <path class="arrow-green" d="M180 267h35v-60"/>
+    <path class="arrow-green" d="M180 327h35v-120"/>
+    <path class="arrow-green" d="M180 387h35v-180"/>
+    <g transform="translate(214 174)">
+      <rect class="green-card" width="42" height="76"/>
+      <text class="tiny" x="21" y="32" text-anchor="middle">DEDUP</text>
+      <text class="tiny" x="21" y="50" text-anchor="middle">GATE</text>
+    </g>
+    <path class="arrow-green" d="M256 212h12"/>
+  </g>
+
+  <path class="arrow" d="M172 360h34"/>
+  <path class="arrow" d="M344 360h34"/>
+  <path class="arrow" d="M544 360h38"/>
+  <path class="arrow" d="M720 360h34"/>
+  <path class="arrow" d="M892 360h40"/>
+  <path class="arrow-green" d="M1078 360h44"/>
+  <path class="dash" d="M1010 522v96H94v-94"/>
+  <path class="dash" d="M1260 594v66H94v-136"/>
+
+  <g transform="translate(40 654)">
+    <rect class="stage" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle">INPUT</text>
+  </g>
+  <g transform="translate(214 654)">
+    <rect class="stage" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle">PREPARE</text>
+  </g>
+  <g transform="translate(388 654)">
+    <rect class="stage" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle">GENERATE</text>
+  </g>
+  <g transform="translate(562 654)">
+    <rect class="stage" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle">SCORE</text>
+  </g>
+  <g transform="translate(736 654)">
+    <rect class="stage" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle">EVALUATE</text>
+  </g>
+  <g transform="translate(910 654)">
+    <rect class="green-card" width="174" height="50"/>
+    <text class="label" x="87" y="32" text-anchor="middle" fill="#14532d">GATE</text>
+  </g>
+  <g transform="translate(1084 654)">
+    <rect class="green-card" width="314" height="50"/>
+    <text class="label" x="157" y="32" text-anchor="middle" fill="#14532d">LEARN AND UPDATE</text>
+  </g>
+</svg>
