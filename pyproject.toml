@@ -1,0 +1,10 @@
+[project]
+name = "writing-zero-first-pass"
+version = "0.1.0"
+description = "Zero-spend Writing-Zero prototype: pairwise sample generation and mock GenRM evaluation."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
